@@ -23,7 +23,7 @@ client.on("message", function(topic, message) {
 	//console.log(`message=`, message);
 	//console.log(`spl=`, message.split(","));
 	//console.log(`data=`, data);
-	console.log(`sending: `, packet);
+	console.log(`sending: `, data);
 	port.write(packet);
 });
 
