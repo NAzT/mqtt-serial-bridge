@@ -4,7 +4,7 @@ const SerialPort = require("serialport");
 const CCTalk = require("@serialport/parser-cctalk");
 
 let port = new SerialPort("COM1", { baudRate: 9600 });
-const parser = port.pipe(new CCtalk());
+const parser = port.pipe(new CCTalk());
 
 const mqtt = require("mqtt");
 let client = mqtt.connect("mqtt://mqtt.cmmc.io");
