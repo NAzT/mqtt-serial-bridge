@@ -17,13 +17,17 @@ client.on("message", function(topic, message) {
 	message = message.toString();
 	let data = message.split(",").map(parseInt);
 	let packet = Buffer.from(data);
+	console.log(packet);
 	port.write(packet);
 });
 
 port.on("open", () => {
 	console.log("port opened.");
 	const msg = Buffer.from(
-		[40, 0, 1, 254, 217]);
+		[
+			//40, 0, 1, 254, 217
+			40, 0, 1, 245, 226
+		]);
 	port.write(msg);
 });
 
