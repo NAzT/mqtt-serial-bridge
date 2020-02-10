@@ -1,8 +1,8 @@
 const SerialPort = require("serialport");
 //const Delimiter = require("@serialport/parser-delimiter");
+//const parser = port.pipe(new Delimiter({ delimiter: "\r\n" }));
 
 let port = new SerialPort("COM1", { baudRate: 9600 });
-const parser = port.pipe(new Delimiter({ delimiter: "\r\n" }));
 
 port.on("open", () => {
 	console.log("port opened.");
