@@ -2,9 +2,10 @@ const SerialPort = require("serialport");
 //const Delimiter = require("@serialport/parser-delimiter");
 //const parser = port.pipe(new Delimiter({ delimiter: "\r\n" }));
 const CCTalk = require("@serialport/parser-cctalk");
-const parser = port.pipe(new CCtalk());
 
 let port = new SerialPort("COM1", { baudRate: 9600 });
+const parser = port.pipe(new CCtalk());
+
 const mqtt = require("mqtt");
 let client = mqtt.connect("mqtt://mqtt.cmmc.io");
 
