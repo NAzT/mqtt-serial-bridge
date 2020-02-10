@@ -31,10 +31,8 @@ client.on("message", function(topic, message) {
 port.on("open", () => {
 	console.log("port opened.");
 	const msg = Buffer.from(
-		[
-			//40, 0, 1, 254, 217
-			40, 0, 1, 245, 226
-		]);
+		[40, 0, 1, 245, 226]
+	);
 	port.write(msg);
 });
 
