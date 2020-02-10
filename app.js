@@ -14,13 +14,15 @@ client.on("connect", function() {
 });
 
 client.on("message", function(topic, message) {
-	console.log(message.toString());
+	message = message.toString();
+	let data = map(message.split(","), parseInt);
+	let packet = Buffer.from(data);
+	port.write(packet);
 });
 
 port.on("open", () => {
 	console.log("port opened.");
 	const msg = Buffer.from(
-		//[40, 0, 1, 245, 226]);
 		[40, 0, 1, 254, 217]);
 	port.write(msg);
 });
