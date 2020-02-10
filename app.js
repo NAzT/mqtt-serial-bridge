@@ -2,6 +2,7 @@ const SerialPort = require("serialport");
 //const Delimiter = require("@serialport/parser-delimiter");
 //const parser = port.pipe(new Delimiter({ delimiter: "\r\n" }));
 const CCTalk = require("@serialport/parser-cctalk");
+const Buffer = require("safe-buffer").Buffer;
 
 let port = new SerialPort("COM1", { baudRate: 9600 });
 const parser = port.pipe(new CCTalk());
@@ -19,7 +20,7 @@ client.on("connect", function() {
 client.on("message", function(topic, message) {
 	message = message.toString();
 	let data = message.split(",").map((i) => parseInt(i, 10));
-	let packet = Buffer.from(data);
+	let packet = new Uint8Array(data);
 	//console.log(`message=`, message);
 	//console.log(`spl=`, message.split(","));
 	//console.log(`data=`, data);
