@@ -3,6 +3,20 @@ const SerialPort = require("serialport");
 //const parser = port.pipe(new Delimiter({ delimiter: "\r\n" }));
 
 let port = new SerialPort("COM1", { baudRate: 9600 });
+o;
+const mqtt = require("mqtt");
+let client = mqtt.connect("mqtt://mqtt.cmmc.io");
+
+client.on("connect", function() {
+	client.subscribe("BILL_VALIDATOR", function(err) {
+		if (!err) {
+		}
+	});
+});
+
+client.on("message", function(topic, message) {
+	console.log(message.toString());
+});
 
 port.on("open", () => {
 	console.log("port opened.");
