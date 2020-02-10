@@ -46,4 +46,5 @@ port.on("error", e => {
 
 parser.on("data", data => {
 	console.log(`Raw: `, data, "Str: ", data.toString());
+	console.log("------------------");
 });
