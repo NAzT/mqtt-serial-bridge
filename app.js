@@ -17,7 +17,7 @@ client.on("message", function(topic, message) {
 	message = message.toString();
 	console.log(`message=`, message);
 	console.log(`spl=`, message.split(","));
-	let data = message.split(",").map(parseInt);
+	let data = message.split(",").map((i) => parseInt(i, 10));
 	console.log(`data=`, data);
 	let packet = Buffer.from(data);
 	console.log(packet);
