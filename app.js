@@ -18,12 +18,12 @@ client.on("connect", function() {
 
 client.on("message", function(topic, message) {
 	message = message.toString();
-	console.log(`message=`, message);
-	console.log(`spl=`, message.split(","));
 	let data = message.split(",").map((i) => parseInt(i, 10));
-	console.log(`data=`, data);
 	let packet = Buffer.from(data);
-	console.log(packet);
+	//console.log(`message=`, message);
+	//console.log(`spl=`, message.split(","));
+	//console.log(`data=`, data);
+	//console.log(packet);
 	port.write(packet);
 });
 
@@ -46,6 +46,6 @@ port.on("error", e => {
 });
 
 parser.on("data", data => {
-	console.log(data);
+	console.log(`Raw: `, data);
 	console.log(`Recv: `, data.toString());
 });
