@@ -20,5 +20,6 @@ port.on("error", e => {
 });
 
 port.on("data", data => {
+	console.log(data);
 	console.log(`Recv: `, data.toString());
 });
