@@ -1,6 +1,8 @@
 const SerialPort = require("serialport");
 //const Delimiter = require("@serialport/parser-delimiter");
 //const parser = port.pipe(new Delimiter({ delimiter: "\r\n" }));
+const CCTalk = require("@serialport/parser-cctalk");
+const parser = port.pipe(new CCtalk());
 
 let port = new SerialPort("COM1", { baudRate: 9600 });
 const mqtt = require("mqtt");
@@ -42,7 +44,7 @@ port.on("error", e => {
 	console.log("on error", e);
 });
 
-port.on("data", data => {
+parser.on("data", data => {
 	console.log(data);
 	console.log(`Recv: `, data.toString());
 });
