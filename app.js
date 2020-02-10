@@ -16,6 +16,7 @@ client.on("connect", function() {
 client.on("message", function(topic, message) {
 	message = message.toString();
 	let data = message.split(",").map(parseInt);
+	console.log(`data=`, data);
 	let packet = Buffer.from(data);
 	console.log(packet);
 	port.write(packet);
