@@ -16,15 +16,20 @@ client.on("connect", async () => {
 	await client.publish("BILL_VALIDATOR", b.join(","));
 	await timeout(1000);
 
+	//d = [40, 0, 1, CMD.factory_setup_and_test];
+	//b = Uint8Array.from([...d, checksum(d)]);
+	//await client.publish("BILL_VALIDATOR", b.join(","));
+	//await timeout(3000);
+
 	d = [40, 0, 1, CMD.reset_device];
 	b = Uint8Array.from([...d, checksum(d)]);
 	await client.publish("BILL_VALIDATOR", b.join(","));
 	await timeout(3000);
 
-	d = [40, 0, 1, CMD.request_software_revision];
-	b = Uint8Array.from([...d, checksum(d)]);
-	await client.publish("BILL_VALIDATOR", b.join(","));
-	await timeout(1000);
+	//d = [40, 0, 1, CMD.request_software_revision];
+	//b = Uint8Array.from([...d, checksum(d)]);
+	//await client.publish("BILL_VALIDATOR", b.join(","));
+	//await timeout(1000);
 
 	d = [40, 0, 1, CMD.perform_self_check];
 	b = Uint8Array.from([...d, checksum(d)]);
@@ -36,41 +41,41 @@ client.on("connect", async () => {
 	await client.publish("BILL_VALIDATOR", b.join(","));
 	await timeout(1000);
 
-	d = [40, 1, 1, CMD.modify_master_inhibit_status, 1];
+	d = [40, 2, 1, CMD.modify_master_inhibit_status, 1, 1];
 	b = Uint8Array.from([...d, checksum(d)]);
 	await client.publish("BILL_VALIDATOR", b.join(","));
 	await timeout(1000);
 
-	d = [40, 0, 1, CMD.request_variable_set];
-	b = Uint8Array.from([...d, checksum(d)]);
-	await client.publish("BILL_VALIDATOR", b.join(","));
-	await timeout(1000);
+	//d = [40, 0, 1, CMD.request_variable_set];
+	//b = Uint8Array.from([...d, checksum(d)]);
+	//await client.publish("BILL_VALIDATOR", b.join(","));
+	//await timeout(1000);
 
-	d = [40, 1, 1, CMD.request_bill_id, 1];
-	b = Uint8Array.from([...d, checksum(d)]);
-	await client.publish("BILL_VALIDATOR", b.join(","));
-	await timeout(50);
-
-	d = [40, 1, 1, CMD.request_bill_id, 2];
-	b = Uint8Array.from([...d, checksum(d)]);
-	await client.publish("BILL_VALIDATOR", b.join(","));
-	await timeout(200);
-
-	d = [40, 1, 1, CMD.request_bill_id, 3];
-	b = Uint8Array.from([...d, checksum(d)]);
-	await client.publish("BILL_VALIDATOR", b.join(","));
-	await timeout(200);
-
-	d = [40, 1, 1, CMD.request_bill_id, 4];
-	b = Uint8Array.from([...d, checksum(d)]);
-	await client.publish("BILL_VALIDATOR", b.join(","));
-	await timeout(200);
-
-	d = [40, 1, 1, CMD.request_bill_id, 5];
-	b = Uint8Array.from([...d, checksum(d)]);
-	await client.publish("BILL_VALIDATOR", b.join(","));
-	await timeout(200);
-
+	//d = [40, 1, 1, CMD.request_bill_id, 1];
+	//b = Uint8Array.from([...d, checksum(d)]);
+	//await client.publish("BILL_VALIDATOR", b.join(","));
+	//await timeout(50);
+	//
+	//d = [40, 1, 1, CMD.request_bill_id, 2];
+	//b = Uint8Array.from([...d, checksum(d)]);
+	//await client.publish("BILL_VALIDATOR", b.join(","));
+	//await timeout(200);
+	//
+	//d = [40, 1, 1, CMD.request_bill_id, 3];
+	//b = Uint8Array.from([...d, checksum(d)]);
+	//await client.publish("BILL_VALIDATOR", b.join(","));
+	//await timeout(200);
+	//
+	//d = [40, 1, 1, CMD.request_bill_id, 4];
+	//b = Uint8Array.from([...d, checksum(d)]);
+	//await client.publish("BILL_VALIDATOR", b.join(","));
+	//await timeout(200);
+	//
+	//d = [40, 1, 1, CMD.request_bill_id, 5];
+	//b = Uint8Array.from([...d, checksum(d)]);
+	//await client.publish("BILL_VALIDATOR", b.join(","));
+	//await timeout(200);
+	//
 	d = [40, 0, 1, CMD.request_inhibit_status];
 	b = Uint8Array.from([...d, checksum(d)]);
 	await client.publish("BILL_VALIDATOR", b.join(","));
@@ -82,12 +87,12 @@ client.on("connect", async () => {
 	d = [40, 2, 1, CMD.modify_inhibit_status, 0, 0];
 	b = Uint8Array.from([...d, checksum(d)]);
 	await client.publish("BILL_VALIDATOR", b.join(","));
-	await timeout(1000);
+	await timeout(5000);
 
 	d = [40, 2, 1, CMD.modify_inhibit_status, 255, 255];
 	b = Uint8Array.from([...d, checksum(d)]);
 	await client.publish("BILL_VALIDATOR", b.join(","));
-	await timeout(1000);
+	await timeout(5000);
 
 	d = [40, 0, 1, CMD.read_buffered_credit_or_error_codes];
 	b = Uint8Array.from([...d, checksum(d)]);
